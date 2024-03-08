@@ -30,6 +30,10 @@ export default () => (
           </View>
         </View>
 
+        <View style={Estilo.footer}>
+          <Text style={Estilo.nomeRm}>Leonardo Blanco - 99119 / Paulo Henrique - 98082</Text>
+        </View>
+
       </SafeAreaView>
     </View>
   </ScrollView>
