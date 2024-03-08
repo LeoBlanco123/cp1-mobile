@@ -1,37 +1,58 @@
 import React from 'react';
-import { Text, View, SafeAreaView, ScrollView, Image, Button } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Estilo from './components/Estilo';
+import { useNavigation } from '@react-navigation/native'; 
 
-export default () => (
-  <ScrollView>
-    <View style={Estilo.viewSafeAndroid}>
-      <SafeAreaView>
+const HomeScreen = () => {
+  const navigation = useNavigation();
 
-        <View style={Estilo.divPrin}>
-          <Text style={Estilo.h1}>PIZZARIA FIAP</Text>
-          <Image style={Estilo.tamImage} source={require('./assets/pizza.png')} />
-        </View>
+  const irParaCardapio = () => {
+    navigation.navigate('Cardapio');
+  };
 
-        <View style={Estilo.textPizza}>
-          <Text style={Estilo.textPizzaH1}>Está com fome de Pizza?</Text>
-          <Text style={Estilo.pizzaText}>Pizzaria FIAP é o lugar perfeito para você!</Text>
-        </View>
+  const irParaRegistro = () => {
+    navigation.navigate('Registro');
+  };
 
-        <View style={Estilo.buttonSemRegistro}>
-          <Button title='Continue sem registrar' color={'#ff2200'} />
-        </View>
+  const irParaLogin = () => {
+    navigation.navigate('Login');
+  };
 
-        <View style={Estilo.buttonContainer}>
-          <View style={Estilo.button}>
-            <Button title='Registrar' color={'#008000'} />
+  return ( 
+    <ScrollView>
+      <View style={Estilo.viewSafeAndroid}>
+        <SafeAreaView>
+
+          <View style={Estilo.divPrin}>
+            <Text style={Estilo.h1}>PIZZARIA FIAP</Text>
+            <Image style={Estilo.tamImage} source={require('./assets/pizza.png')} />
           </View>
 
-          <View style={Estilo.button}>
-            <Button title='Login' color={'#808080'} />
+          <View style={Estilo.textPizza}>
+            <Text style={Estilo.textPizzaH1}>Está com fome de Pizza?</Text>
+            <Text style={Estilo.pizzaText}>Pizzaria FIAP é o lugar perfeito para você!</Text>
           </View>
-        </View>
 
-      </SafeAreaView>
-    </View>
-  </ScrollView>
-);
+          <View style={Estilo.buttonSemRegistro}>
+            <TouchableOpacity onPress={irParaCardapio} style={Estilo.button}>
+              <Text style={Estilo.buttonText}>Continue sem registrar</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={Estilo.buttonContainer}>
+            <TouchableOpacity onPress={irParaRegistro} style={Estilo.button}>
+              <Text style={Estilo.buttonText}>Registrar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={irParaLogin} style={Estilo.button}>
+              <Text style={Estilo.buttonText}>Login</Text>
+            </TouchableOpacity>
+          </View>
+
+        </SafeAreaView>
+      </View>
+    </ScrollView>
+  );
+};
+
+export default HomeScreen;
